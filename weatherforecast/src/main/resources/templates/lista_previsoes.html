@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		<title>Hello Spring Boot</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Alunos</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Dia da Semana</th>
+							<th>Temperatura Minima</th>
+							<th>Temperatura Máxima</th>
+							<th>Humidade Rlativa do ar</th>
+							<th>Descrição</th>
+						</tr>
+					</thead>
+					<form class="form-inline" method="post" th:object="${weatherforecastModel}" th:action="@{/previsoes}" style="margin: 20px 0">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Nome" th:field="*{DayInTheWeek}"/>
+							<input type="text" class="form-control" placeholder="TempMinima" th:field="*{TemperatureMinimum}"/>
+							<input type="text" class="form-control" placeholder="TempMáxima" th:field="*{TemperatureMaximum}"/>
+							<input type="text" class="form-control" placeholder="HumidadeRelativa" th:field="*{RelativeHumidity}"/>
+							<input type="text" class="form-control" placeholder="Descricao" th:field="*{Description}"/>
+							<button type="submit" class="btn btn-primary">Adicionar</button>
+						</div>
+					</form>
+					<tbody>
+						<tr th:each="weatherforecastModel : ${previsoes}">
+							<td th:text="${weatherforecastModel.DayInTheWeek}"></td>
+							<td th:text="${weatherforecastModel.TemperatureMinimum}"></td>
+							<td th:text="${weatherforecastModel.TemperatureMaximum}"></td>
+							<td th:text="${weatherforecastModel.RelativeHumidity}"></td>
+							<td th:text="${weatherforecastModel.Description}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+
+
