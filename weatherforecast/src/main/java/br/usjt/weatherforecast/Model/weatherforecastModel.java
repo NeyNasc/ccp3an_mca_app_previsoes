@@ -18,6 +18,10 @@ public class weatherforecastModel implements Serializable {
 	private double TemperatureMaximum;	
 	private int RelativeHumidity;
 	private String Description;
+	private String DateAndTime;
+	private double log;
+	private double lat;
+	
 	
 	
 	public long getId() {
@@ -55,5 +59,24 @@ public class weatherforecastModel implements Serializable {
 	}
 	public void setDescription(String description) {
 		Description = description;
+	}
+	public String getDateAndTime() {
+		return DateAndTime;
+	}
+	public void setDateAndTime(String dateAndTime) {
+		DateAndTime = dateAndTime;
+	}
+	public double getLog() {
+		return log;
+	}
+	public void setLog(double log) {
+		this.log = log;
+	}
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
 	} 
+	
 }
